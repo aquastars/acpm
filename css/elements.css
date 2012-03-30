@@ -1,0 +1,38 @@
+body {
+    font: 14px/1.8 Verdana, sans-serif;
+}
+
+h1 {
+    font: 30px/1.5 'AudiTypeExtendedBold', Verdana, sans-serif;
+}
+
+h2 {
+    font: 24px/1.5 'AudiTypeExtendedBold', Verdana, sans-serif;
+}
+
+h3 {
+    font: 18px/1.5 'AudiTypeExtendedBold', Verdana, sans-serif;
+}
+
+
+.acpm-headline-overview {
+    color: #b3b3b3;
+}
+
+
+/* generic module box */
+.acpm-module {
+    background: rgba(0,0,0, .05);
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.acpm-canvas {
+    background: rgba(0,0,0, .05);
+    min-height: 270px;
+}
+
+.acpm-12months {
+    min-height: 370px;
+}
+

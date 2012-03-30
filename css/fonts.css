@@ -1,0 +1,34 @@
+/**
+ * Fonts
+ */
+@font-face {
+    font-family: 'AudiTypeNormal';
+    src: url('../assets/fonts/AudiType-Normal.eot');
+    src: url('../assets/fonts/AudiType-Normal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AudiTypeBold';
+    src: url('../assets/fonts/AudiType-Bold.eot');
+    src: url('../assets/fonts/AudiType-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AudiTypeExtendedNormal';
+    src: url('../assets/fonts/AudiType-ExtendedNormal.eot');
+    src: url('../assets/fonts/AudiType-ExtendedNormal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AudiTypeExtendedBold';
+    src: url('../assets/fonts/AudiType-ExtendedBold.eot');
+    src: url('../assets/fonts/AudiType-ExtendedBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

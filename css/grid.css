@@ -1,0 +1,41 @@
+html,
+body {
+    height: 100%;
+}
+
+.acpm-wrapper {
+    background: rgba(0,0,0,.02);
+    box-sizing: border-box;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.acpm-header {
+    background: rgba(0,0,0,.02);
+    box-sizing: border-box;
+    margin: 0 0 30px 0;
+}
+
+.acpm-sidebar {
+    background: rgba(0,0,0,.02);
+    float: left;
+    width: 29%;
+}
+
+.acpm-content {
+    background: rgba(0,0,0,.03);
+    float: right;
+    width: 70%;
+}
+
+.acpm-alpha {
+    float: left;
+}
+.acpm-beta {
+    float: right;
+}
+
+.acpm-half {
+    width: 48%;
+}

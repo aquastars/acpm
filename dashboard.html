@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>    <html class="ie8" lang="de"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="de"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <title>ACPM - Template Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/elements.css">
+    <!--Templates -->
+    <!--testChart Template -->
+    <script id="testChart-template"  type="text/template">
+        <h1 class="acpm-headline-overview">Alle Requests</h1>
+            <p>Name: <%= name %></p>
+            <p>Anzahl: <%= value %></p>
+            <p>Datum:<%= date %></p>
+    </script>
+    <!--template for number of requests -->
+    <script id="numRequestChart-template"  type="text/template">
+         <b><%= date %></b></br>&nbsp;<%= value %>&nbsp;<%= name %>
+    </script>
+    <!--Template for Top5 Chart-->
+    <script id="top5Chart-template"  type="text/template">
+              <li>
+                <p>Händler-ID: <%=id%>  Requests: <%=value%></p>
+              </li>
+    </script>
+</head>
+
+<body>
+    <div class="acpm-wrapper clearfix">
+        <header class="acpm-header">
+            <h1 class="acpm-headline-title">Audi Configurator Performance Monitoring</h1>
+        </header>
+        <aside class="acpm-sidebar">
+            <section id="testChart" class="acpm-module">
+            </section>
+            <section id="" class="acpm-module">
+                <h2 class="acpm-headline-overview">Top 5 - Vormonat</h2>
+                <div id="top5Chart"></div>
+            </section>
+            <section id="" class="acpm-module">
+                <h3 class="acpm-headline-overview">Zugriffe</h3>
+                <p>Die meisten Zugriffe erfolgten am Donnerstag</p>
+                <p>Der Tag mit den geringsten Zugriffen war der Sonntag.</p>
+                <p>Ich bin ein Kuchendiagramm - vielleicht.</p>
+            </section>
+            <section id="" class="acpm-module">
+                <h2 class="acpm-headline-overview">Beliebte Actions</h2>
+                <p>Balkendiagramm</p>
+            </section>
+            <section id="" class="acpm-module">
+                <h1 class="acpm-headline-overview">Carline des Monats</h1>
+                <p>Q3</p>
+            </section>
+        </aside>
+        <section class="acpm-content">
+            <section class="acpm-module">
+                <h1 class="acpm-headline-overview">Anzahl Requests Händler-ID (Vormonat)</h1>
+                <div id="numRequestChart" class="acpm-canvas acpm-requests-per-dealer">&nbsp;</div>
+                <p>Oben die Barchart. Per hover auf einen Balken blendet sich ein Tooltipp ein, in dem die Händler-ID steht und die absolute Zugriffzahl.</p>
+                <p>Plus das Range-Tool - zum Beeinflussen der oberen Barchart-Ansicht - </p>
+                <p>Input-Feld. Hier kann man die Händler-ID eingeben. Die obere Barchart zentriert sich daraufhin auf den gefundenen Händler.</p>
+            </section>
+            <section id="" class="acpm-module">
+                <h1 class="acpm-headline-overview">Seitenaufrufe alle Märkte (12-Monats-Übersicht)</h1>
+                <div class="acpm-canvas acpm-12months">&nbsp;</div>
+                <p>Oben die umfangreiche Combo-Stack-Chart. Hier lassen sich die Zugriffe auf die Seiten des Konfigurators über eine 12-Monats-Ansicht vergleichen.</p>
+                <p>Legende. Beim behovern blendet sich in der Combo-Chart ein Liniendiagramm ein. Jede Seite hat ihr eigenes Liniendiagramm. An den Spitzen des Diagramms stehen die absoluten Zugriffszahlen der jeweiligen Monate.</p>
+            </section>
+            <section id="" class="acpm-module acpm-half acpm-alpha">
+                <h2 class="acpm-headline-overview">Seitenaufrufe für alle Märkte (Vormonat)</h2>
+                <p>Balkendiagramm - monatliche Seitenaufrufe alle Märkte - also einen Balken der oben aufgeführten Combo-Stack-Chart.</p>
+            </section>
+            <section id="" class="acpm-module acpm-half acpm-beta">
+                <h2 class="acpm-headline-overview">Verteilung der Sessions auf Mandanten (Vormonat)</h2>
+                <p>Balkendiagramm. Die Anzahl der Sessions pro Markt lassen sich hier ablesen</p>
+            </section>
+            <br class="clear">
+            <section class="acpm-module">
+                <h1 class="acpm-headline-overview">Aufrufe actions alle Märkte (Vormonat)</h1>
+                <p>Balkendiagramm. Ich bin problematisch, weil ich viele Daten beinhalte.</p>
+            </section>
+        </section>
+    </div>
+    <!-- JavaScript Libraries-->
+<script src="assets/js/libs/underscore.js" type="text/javascript"></script>
+<script src="assets/js/libs/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="assets/js/libs/backbone.js" type="text/javascript"></script>
+
+ <!-- Application core (Order matters) -->
+<script src="src/application.js" type="text/javascript"></script>
+
+<!--modules (views,models,collections)-->
+<script src="src/modules/testChart.js" type="text/javascript"></script>
+<script src="src/modules/numRequestChart.js" type="text/javascript"></script>
+<script src="src/modules/top5Chart.js" type="text/javascript"></script>
+</body>
+</html>
