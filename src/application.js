@@ -155,7 +155,8 @@ acpm.app = {
 			id : 4,
 			value : 600
 		})]);
-
+		var month12ChartModule=acpm.app.module("12monthChart");
+		var month12ChartView=new month12ChartModule.Views.month12Chart();
 	}
 };
 

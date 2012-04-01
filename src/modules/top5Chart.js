@@ -19,7 +19,6 @@
 	 ChartModule.Views.Top5Chart=Backbone.View.extend({
 		  		el: '#top5Chart',
 		  		template: _.template($('#top5Chart-template').html()),
-		  		events: {},
 		  		initialize:function(){
 		  			_.bindAll(this,"render");
 		  			this.collection.bind("reset",this.render);
@@ -28,12 +27,9 @@
 		  		render: function() {
 		  			var that=this;
 		  			var collection=this.collection;
-		  			var htmlString="<ul>";
 		  			collection.each(function(item){
-		  				htmlString+=that.template(item.toJSON());
+		  				this.$(".top5-overview").append(that.template(item.toJSON()));
 		  			});
-		  			htmlString+="</ul>";
-		   			$(this.el).html(htmlString);
 		    			return this;
 		  			}
 			});
