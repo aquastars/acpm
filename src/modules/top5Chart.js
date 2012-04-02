@@ -1,6 +1,6 @@
 // modules/top5Chart.js
 // Module reference argument, assigned at the bottom
-(function(ChartModule) {
+;(function(ChartModule) {
 	 console.info("top5Chart module loaded:::");
 	 ChartModule.Model = Backbone.Model.extend({
 	   defaults: {
@@ -20,7 +20,6 @@
 	 ChartModule.Views.Top5Chart=Backbone.View.extend({
 		  		el: '#top5Chart',
 		  		template: _.template($('#top5Chart-template').html()),
-		  		events: {},
 		  		initialize:function(){
 		  			_.bindAll(this,"render");
 		  			this.collection.bind("reset",this.render);
@@ -32,7 +31,7 @@
 		  			var max=600;
 		  			collection.each(function(item){
 		  				item.set('max,max');
-		  				that.$("ul").append(that.template(item.toJSON()));
+		  				this.$(that.template(item.toJSON())).appendTo(this.$("ul")).find(".chart-bar").css({width:0}).animate({width:(item.get('value')/max*275)+"px"},1500);
 		  			});
 		    			return this;
 		  			}

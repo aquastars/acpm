@@ -23,7 +23,7 @@
 	  			console.info("numRequestChart iniitialized");
 	  		},
 	  		render: function() {
-	   				$(this.el).html(this.template(this.model.toJSON()));
+	   				this.$("acpm-requests-per-dealer").html(this.template(this.model.toJSON()));
 	    			return this;
 	  				}
 		});

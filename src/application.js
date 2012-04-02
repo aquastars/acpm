@@ -159,6 +159,9 @@ acpm.app = {
 		var minMaxRequestsModel=new minMaxRequestModule.Model();
 		var minMaxRequestView=new minMaxRequestModule.Views.MinMaxRequestsChart({model:minMaxRequestsModel});
 		minMaxRequestView.render();
+		var month12ChartModule=acpm.app.module("12monthChart");
+		var month12ChartView=new month12ChartModule.Views.month12Chart();
+
 	}
 };
 
