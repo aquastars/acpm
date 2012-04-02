@@ -11,20 +11,21 @@
     <link rel="stylesheet" type="text/css" href="css/elements.css">
     <!--Templates -->
     <!--testChart Template -->
-    <script id="testChart-template"  type="text/template">
-        <h1 class="acpm-headline-overview">Alle Requests</h1>
-            <p>Name: <%= name %></p>
-            <p>Anzahl: <%= value %></p>
-            <p>Datum:<%= date %></p>
+    <script id="allRequestsChart-template"  type="text/template">
+        <h1 class="acpm-headline-overview">Alle Requests:</h1>
+            <h3 class="all-requests"><%= overallRequests %><span>[<%=tendency%>]</span></h3>
     </script>
     <!--template for number of requests -->
     <script id="numRequestChart-template"  type="text/template">
          <b><%= date %></b></br>&nbsp;<%= value %>&nbsp;<%= name %>
+
     </script>
     <!--Template for Top5 Chart-->
     <script id="top5Chart-template"  type="text/template">
-              <li>
-                <p>Händler-ID: <%=id%>  Requests: <%=value%></p>
+    	       <li style="margin-bottom:5px; padding: 5px">
+                <div style="float:left;"><%=   id%></div><div style="float:right;"><%=value   %></div>
+                <div class="clear"></div>
+                <div class="chart-bar" style="<%= 'width:'+((value/max)*350)+'px;'%>"></div>
               </li>
     </script>
 </head>
@@ -37,9 +38,11 @@
         <aside class="acpm-sidebar">
             <section id="testChart" class="acpm-module">
             </section>
-            <section id="" class="acpm-module">
+            <section id="top5Chart" class="acpm-module">
                 <h2 class="acpm-headline-overview">Top 5 - Vormonat</h2>
-                <div id="top5Chart"></div>
+                 <div style="float:left;">Händler-ID:</div><div style="float:right;">Requests:</div>
+                 <div class="clear"></div>
+                <ul></ul>
             </section>
             <section id="minMaxRequestsChart" class="acpm-module">
                 <h3 class="acpm-headline-overview">Zugriffe</h3>
@@ -98,7 +101,7 @@
 <script src="src/application.js" type="text/javascript"></script>
 
 <!--modules (views,models,collections)-->
-<script src="src/modules/testChart.js" type="text/javascript"></script>
+<script src="src/modules/allRequestsChart.js" type="text/javascript"></script>
 <script src="src/modules/numRequestChart.js" type="text/javascript"></script>
 <script src="src/modules/top5Chart.js" type="text/javascript"></script>
 <script src="src/modules/minMaxRequestChart.js" type="text/javascript"></script>

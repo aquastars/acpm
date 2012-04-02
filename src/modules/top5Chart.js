@@ -6,6 +6,7 @@
 	   defaults: {
 	     value:500,
 	     name:"unknown name",
+	     max:600,
 	     id:0
 	   }
 	 });
@@ -28,12 +29,11 @@
 		  		render: function() {
 		  			var that=this;
 		  			var collection=this.collection;
-		  			var htmlString="<ul>";
+		  			var max=600;
 		  			collection.each(function(item){
-		  				htmlString+=that.template(item.toJSON());
+		  				item.set('max,max');
+		  				that.$("ul").append(that.template(item.toJSON()));
 		  			});
-		  			htmlString+="</ul>";
-		   			$(this.el).html(htmlString);
 		    			return this;
 		  			}
 			});

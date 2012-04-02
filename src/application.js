@@ -122,15 +122,15 @@ acpm.app = {
 	//main initialization
 	init : function() {
 		//TestChart
-		var TestChartModule = acpm.app.module('testChart');
-		var testChartModel = new TestChartModule.Model;
-		var testChartView = new TestChartModule.Views.TestChart({
-			model : testChartModel
+		var AllRequestsChartModule = acpm.app.module('allRequestsChart');
+		var allRequestsChartModel = new AllRequestsChartModule.Model;
+		var allRequestsChartView = new AllRequestsChartModule.Views.AllRequestsChart({
+			model : allRequestsChartModel
 		});
-		acpm.app.models.add("testChartModel", testChartModel);
+		acpm.app.models.add("allRequestsChart", allRequestsChartModel);
 		//trigger change event => render the view
 		//testChartModel.set("date",new Date());
-		testChartModel.trigger("change");
+		allRequestsChartModel.trigger("change");
 		//Top5 Chart
 		var Top5ChartModule = acpm.app.module('top5Chart');
 		var Top5ChartModel = Top5ChartModule.Model;

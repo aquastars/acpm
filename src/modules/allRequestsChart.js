@@ -1,13 +1,12 @@
-// modules/testChartModule.js
+// modules/allRequestsChart.js
 // Module reference argument, assigned at the bottom
 (function(ChartModule) {
- console.info("testChart module loaded:::");
+ console.info("allRequestsChart module loaded:::");
  ChartModule.Model = Backbone.Model.extend({
    defaults: {
      date:new Date().toString('yyyy-MM-dd'),
-     value:1000,
-     name:"unknown",
-     id:0
+     overallRequests:Math.round(Math.random()*10000),
+     tendency:"+"
    }
  });
  
@@ -15,19 +14,19 @@
    model: ChartModule.Model
  });
 
- ChartModule.Views.TestChart=Backbone.View.extend({
+ ChartModule.Views.AllRequestsChart=Backbone.View.extend({
 	  		el: '#testChart',
-	  		template: _.template($('#testChart-template').html()),
+	  		template: _.template($('#allRequestsChart-template').html()),
 	  		events: {},
 	  		initialize:function(){
 	  				_.bindAll(this,"render");
 		  			this.model.bind("change",this.render);
-	  			console.info("TestChart initialized");
+	  			console.info("AllRequestsChart initialized");
 	  		},
 	  		render: function() {
 	   				$(this.el).html(this.template(this.model.toJSON()));
 	    			return this;
 	  				}
 		});
-})(acpm.app.module("testChart"));
+})(acpm.app.module("allRequestsChart"));
 
