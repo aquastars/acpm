@@ -155,7 +155,10 @@ acpm.app = {
 			id : 4,
 			value : 600
 		})]);
-
+		var minMaxRequestModule=acpm.app.module("minMaxRequestsChart");
+		var minMaxRequestsModel=new minMaxRequestModule.Model();
+		var minMaxRequestView=new minMaxRequestModule.Views.MinMaxRequestsChart({model:minMaxRequestsModel});
+		minMaxRequestView.render();
 	}
 };
 

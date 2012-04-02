@@ -5,7 +5,7 @@
  ChartModule.Model = Backbone.Model.extend({
    defaults: {
      date:new Date(),
-     value:1000,
+     value:Math.random()*100000,
      name:"unknown",
      id:0
    }
