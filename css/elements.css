@@ -49,8 +49,7 @@ h3.all-requests span{
 }
 
 .chart-bar{
-	height:10px;
-	min-width: 10px;
+	height:20px;
 	background-color: #ccc;
 	display:block;
 }

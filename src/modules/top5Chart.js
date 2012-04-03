@@ -19,20 +19,23 @@
 
 	 ChartModule.Views.Top5Chart=Backbone.View.extend({
 		  		el: '#top5Chart',
-		  		template: _.template($('#top5Chart-template').html()),
 		  		initialize:function(){
+		  			this.tmpl=_.template($('#top5Chart-template').html()),
 		  			_.bindAll(this,"render");
 		  			this.collection.bind("reset",this.render);
 		  			console.info("Top5Chart initialized");
 		  		},
 		  		render: function() {
-		  			var that=this;
-		  			var collection=this.collection;
-		  			var max=600;
-		  			collection.each(function(item){
-		  				item.set('max,max');
-		  				this.$(that.template(item.toJSON())).appendTo(this.$("ul")).find(".chart-bar").css({width:0}).animate({width:(item.get('value')/max*275)+"px"},1500);
-		  			});
+		  			var coll=this.collection,max,i,item,len;
+		  			len=coll.length<6?coll.length:5;
+		  			//get max Value from collection
+		  			max=this.collection.max(function(co){ return co.get("value");});
+		  			log("max value in collection: "+max.get("value"),max);
+		  			max=max.get("value");
+		  			for(i=0;i<len;i++){
+		  				item=coll.at(i);
+		  				$(this.tmpl(item.toJSON())).appendTo(this.$("ul")).find(".chart-bar").css({width:0}).animate({width:(item.get('value')/max*this.$("ul").width())+"px"},1500);
+		  			};
 		    			return this;
 		  			}
 			});
