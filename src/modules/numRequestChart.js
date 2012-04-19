@@ -9,6 +9,26 @@
 			name : "unknown",
 			id : 0
 		}
+		,
+		initialize: function(query) {
+        	this.query = query||"cats";
+    	},
+
+    	url: function() {
+        	return "http://search.twitter.com/search.json?q=" + this.query + "&callback=?";
+    	},
+
+    	parse: function(data) {
+        	console.log("numRequestChart DATA", data);
+        	// note that the original result contains tweets inside of a 'results' array, not at 
+        	// the root of the response.
+        	return {
+			date : new Date(),
+			value : Math.random() * 100000,
+			name : "unknown",
+			id : 0
+		};
+    	}
 	});
 
 	ChartModule.Views.GoogleChart = function(canvas, data) {

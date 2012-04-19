@@ -133,7 +133,7 @@ acpm.app = {
 	init : function() {
 		//TestChart
 		var AllRequestsChartModule = acpm.app.module('allRequestsChart');
-		var allRequestsChartModel = new AllRequestsChartModule.Model;
+		var allRequestsChartModel = new AllRequestsChartModule.Model();
 		var allRequestsChartView = new AllRequestsChartModule.Views.AllRequestsChart({
 			model : allRequestsChartModel
 		});
@@ -141,7 +141,6 @@ acpm.app = {
 
 		//Top5 Chart
 		var Top5ChartModule = acpm.app.module('top5Chart');
-		var Top5ChartModel = Top5ChartModule.Model;
 		var top5ChartList = new Top5ChartModule.List();
 		acpm.app.models.add("top5ChartModel", top5ChartList);
 		top5ChartView = new Top5ChartModule.Views.Top5Chart({
@@ -155,6 +154,7 @@ acpm.app = {
 			model : minMaxRequestsModel
 		});
 		var month12ChartModule = acpm.app.module("12monthChart");
+		console.log("month12ChartModule",month12ChartModule.List);
 		var month12ChartList = new month12ChartModule.List();
 		acpm.app.models.add("month12ChartList", month12ChartList);
 		var month12ChartView = new month12ChartModule.Views.month12Chart({
@@ -182,37 +182,11 @@ acpm.app = {
 	googleChartApiLoaded:false,
 	//initialization of the models with MockData
 	initModels : function() {
-		var ModelItem = acpm.app.module('top5Chart').Model;
-		var top5ChartList = acpm.app.models.get("top5ChartModel");
-		var arr = [];
-		//mock/generate 1000 Items
-		for(var i = 0; i < 10; i++) {
-			arr.push({
-				id : i,
-				name : "Retailer_" + i,
-				value : acpm.utils.getRandomNumberInRange(0, 500)
-			});
-		}
-		top5ChartList.reset(arr);
-
-		var allRequestsChartModel = acpm.app.models.get("allRequestsChartModel");
-		//trigger change event => render the view
-		//testChartModel.set("date",new Date());
-		allRequestsChartModel.trigger("change");
-		//		acpm.app.models.get("minMaxRequestsModel").trigger("change");
-		acpm.app.models.get("minMaxRequestsModel").set({
-			"minRequest" : Math.round(Math.random() * 5000),
-			"maxRequest" : Math.round(Math.random() * 10000)
-		});
-		//			maxRequests : Math.round(Math.random() * 100000),
-		//	minDay : "Wednesday",
-		//	minRequests : Math.round(Math.random() * 50000),
-		//
-		var numRequestChartModel = acpm.app.models.get("numRequestChartModel");
-		//trigger change event => render the view
-		numRequestChartModel.trigger("change");
-
-		acpm.app.models.get("month12ChartList").reset([]);
+		var numRequestChartModel = acpm.app.models.get("numRequestChartModel").fetch();
+		var top5ChartList = acpm.app.models.get("top5ChartModel").fetch();
+		var allRequestsChartModel = acpm.app.models.get("allRequestsChartModel").fetch();
+		var month12ChartList=acpm.app.models.get("month12ChartList").reset([]);
+		var minMaxRequestsModel=acpm.app.models.get("minMaxRequestsModel").fetch();
 	}
 };
 

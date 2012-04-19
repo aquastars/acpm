@@ -11,11 +11,27 @@
 	});
 
 	ChartModule.List = Backbone.Collection.extend({
+
 		model : ChartModule.Model,
 		//order by 'value' key descending
 		comparator : function(m) {
 			return -m.get('value');
-		}
+		},
+
+		initialize: function(query) {
+        	this.query = query||"cats";
+    	},
+
+    	url: function() {
+        	return "http://search.twitter.com/search.json?q=" + this.query + "&callback=?";
+    	},
+
+    	parse: function(data) {
+        	console.log("12monthChart DATA", data);
+        	// note that the original result contains tweets inside of a 'results' array, not at 
+        	// the root of the response.
+        	return data.results;
+    	}
 	});
 
 	ChartModule.Views.GoogleChart = function(canvas, data) {

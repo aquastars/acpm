@@ -14,7 +14,30 @@
 	 ChartModule.List = Backbone.Collection.extend({
 	   model: ChartModule.Model,
 	   //order by 'value' key descending
-	   comparator:function(m) { return -m.get('value'); }
+	   comparator:function(m) { return -m.get('value'); },
+	   initialize: function(query) {
+        	this.query = query||"cats";
+    	},
+
+    	url: function() {
+        	return "http://search.twitter.com/search.json?q=" + this.query + "&callback=?";
+    	},
+
+    	parse: function(data) {
+        	console.log("top5Chart DATA", data);
+        	// note that the original result contains tweets inside of a 'results' array, not at 
+        	// the root of the response.
+        			var arr = [];
+		//mock/generate 1000 Items
+		for(var i = 0; i < 10; i++) {
+			arr.push(new ChartModule.Model({
+				id : i,
+				name : "Retailer_" + i,
+				value : acpm.utils.getRandomNumberInRange(0, 500)
+			}));
+		}
+        	return arr
+    	}
 	 });
 
 	 ChartModule.Views.Top5Chart=Backbone.View.extend({
