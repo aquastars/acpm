@@ -175,7 +175,7 @@ acpm.app = {
 			collection : favoriteActionsList
 		});
 
-		var that = this;
+/*		var that = this;
 		google.load('visualization', '1.1', {
 			packages : ['corechart', 'controls'],
 			"callback" : function() {
@@ -183,7 +183,8 @@ acpm.app = {
 				that.googleChartApiLoaded=true;
 				that.initModels();
 			}
-		});
+		});*/
+		this.initModels();
 
 	},
 	googleChartApiLoaded:false,

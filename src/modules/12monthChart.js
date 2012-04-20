@@ -84,11 +84,24 @@
 			console.info("12monthChart initialized");
 		},
 		render : function() {
-			//add GoogleChart from AJAX API via iFrame
+			var that = this;
 			//TODO Bugfix this.$(".acpm-canvas") !!!!
 			var target = jQuery(".acpm-12months")[0];
-			log(target);
-			new ChartModule.Views.GoogleChart(target, {});
+				if(acpm.app.googleChartApiLoaded){
+					//add GoogleChart from AJAX API via iFrame
+					new ChartModule.Views.GoogleChart(target, {});
+				}
+				else{
+					google.load('visualization', '1.1', {
+						packages : ['corechart', 'controls'],
+						"callback" : function() {
+							log("Google Charts API Loaded...");
+							acpm.app.googleChartApiLoaded=true;
+							new ChartModule.Views.GoogleChart(target, {});				
+							}
+						});
+				}
+
 			return this;
 		}
 		

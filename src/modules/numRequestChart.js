@@ -71,7 +71,21 @@
 			//add GoogleChart from AJAX API via iFrame
 			var target = this.$(".acpm-canvas").empty();
 			target = target[0];
-			new ChartModule.Views.GoogleChart(target, {});
+				if(acpm.app.googleChartApiLoaded){
+					//add GoogleChart from AJAX API via iFrame
+					new ChartModule.Views.GoogleChart(target, {});
+				}
+				else{
+					google.load('visualization', '1.1', {
+						packages : ['corechart', 'controls'],
+						"callback" : function() {
+							log("Google Charts API Loaded...");
+							acpm.app.googleChartApiLoaded=true;
+							new ChartModule.Views.GoogleChart(target, {});
+							}
+						});
+				}
+			
 			return this;
 		}
 	});
