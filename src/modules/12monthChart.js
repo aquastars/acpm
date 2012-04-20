@@ -76,7 +76,7 @@
 	}
 
 
-	ChartModule.Views.month12Chart = Backbone.View.extend({
+	ChartModule.Views.Month12Chart = Backbone.View.extend({
 		el : '#12monthChart',
 		initialize : function() {
 			_.bindAll(this, "render");

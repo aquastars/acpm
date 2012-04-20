@@ -28,6 +28,14 @@
                 <div class="chart-bar"></div>
               </li>
     </script>
+        <!--Template for FavActions Chart-->
+    <script id="favoriteActionsChart-template"  type="text/template">
+               <li style="margin-bottom:2px;">
+                <div style="float:left;"><%=   name%> (<%=action%>)</div><div style="float:right;"><%=requests %></div>
+                <div class="clear"></div>
+                <div class="chart-bar"></div>
+              </li>
+    </script>
 </head>
 
 <body>
@@ -50,9 +58,10 @@
                 <p>Die meisten Zugriffe erfolgten am Mittwoch</p>
                 <p>Der Tag mit den geringsten Zugriffen war der Sonntag.</p>
             </section>
-            <section id="" class="acpm-module">
+            <section id="favoriteActionsChart" class="acpm-module">
                 <h2 class="acpm-headline-overview">Beliebte Actions</h2>
-                <p>Balkendiagramm</p>
+                <div class="clear"></div>
+                <ul style="padding:5px;"></ul>
             </section>
             <section id="" class="acpm-module">
                 <h1 class="acpm-headline-overview">Carline des Monats</h1>
@@ -105,5 +114,6 @@
 
 <script src="src/modules/minMaxRequestChart.js" type="text/javascript"></script>
 <script src="src/modules/12monthChart.js" type="text/javascript"></script>
+<script src="src/modules/favoriteActionsChart.js" type="text/javascript"></script>
 </body>
 </html>

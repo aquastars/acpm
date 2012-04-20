@@ -157,7 +157,7 @@ acpm.app = {
 		console.log("month12ChartModule",month12ChartModule.List);
 		var month12ChartList = new month12ChartModule.List();
 		acpm.app.models.add("month12ChartList", month12ChartList);
-		var month12ChartView = new month12ChartModule.Views.month12Chart({
+		var month12ChartView = new month12ChartModule.Views.Month12Chart({
 			collection : month12ChartList
 		});
 		//
@@ -167,12 +167,19 @@ acpm.app = {
 		var numRequestChartView = new numRequestChartModule.Views.NumRequestChart({
 			model : numRequestChartModel
 		});
+
+		var favoriteActionsChartModule=acpm.app.module("favoriteActionsChart");
+		var favoriteActionsList=new favoriteActionsChartModule.List();
+		acpm.app.models.add("favoriteActionsList", favoriteActionsList);
+		var favoriteActionsChartView = new favoriteActionsChartModule.Views.FavoriteActionsChart({
+			collection : favoriteActionsList
+		});
+
 		var that = this;
-		
 		google.load('visualization', '1.1', {
 			packages : ['corechart', 'controls'],
 			"callback" : function() {
-				log("Hello Google CallBack");
+				log("Google Charts API Loaded...");
 				that.googleChartApiLoaded=true;
 				that.initModels();
 			}
@@ -187,6 +194,7 @@ acpm.app = {
 		var allRequestsChartModel = acpm.app.models.get("allRequestsChartModel").fetch();
 		var month12ChartList=acpm.app.models.get("month12ChartList").reset([]);
 		var minMaxRequestsModel=acpm.app.models.get("minMaxRequestsModel").fetch();
+		var favoriteActionsList=acpm.app.models.get("favoriteActionsList").fetch();
 	}
 };
 
