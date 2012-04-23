@@ -23,30 +23,60 @@ ChartModule.List = Backbone.Collection.extend({
       },
 
       parse: function(data) {
-          console.log("12monthChart DATA", data);
+          console.log("configuredCarlinesChart DATA", data);
           // note that the original result contains tweets inside of a 'results' array, not at 
           // the root of the response.
-          return data.results;
+          return new ChartModule.Model();
       }
   });
 
  ChartModule.Views.ConfiguredCarlinesChart=Backbone.View.extend({
 	  		el: '#configuredCarlinesChart',
-	  		events: {},
 	  		initialize:function(){
+            console.info("ConfiguredCarlinesChart initialized");
 	  				_.bindAll(this,"render");
-		  			this.collection.bind("change",this.render);
-	  			console.info("ConfiguredCarlinesChart initialized");
+		  			this.collection.bind("reset",this.render);
 	  		},
 	  		render: function() {
-	   				drawChart(target,this.collection);
+        var canvas = this.$(".acpm-canvas")[0];
+	   				var chart=new BarChart(canvas,[12,20,30,40,99,28,34,64,22,99]);
+                chart.draw();
 	    			return this;
 	  				}
 		});
 
 
-function drawChart(target,data){
-  
+function BarChart(targetCanvas,datapoints){
+    if (! (this instanceof arguments.callee)) {
+    return new arguments.callee(elementName, datapoints, opts);
+  }
+  var self=this;
+  this.barWidth = 20;
+  this.spacing = 10;
+  this.barColor="#a55";
+  this.draw = function () {
+    var paper = Raphael(targetCanvas, 500,300);
+    // Normalize
+    var normalizedDatapoints = [],
+      maximumDatavalue = Math.max.apply(Math, datapoints),
+      i = 0,
+      barColor, xOffset, yOffset, bar, targetLine;
+
+    for (i = 0; i < datapoints.length; i = i + 1) {
+      normalizedDatapoints[i] = datapoints[i] / maximumDatavalue;
+    }
+    // Bars
+    for (i = 0; i < datapoints.length; i = i + 1) {
+      xOffset = i * (self.barWidth + self.spacing) + self.width - datapoints.length * (self.barWidth + self.spacing);
+      yOffset = this.height - normalizedDatapoints[i] * self.height;
+      bar = paper.crispRect(xOffset, yOffset, self.barWidth, normalizedDatapoints[i] * self.height);
+      bar.attr({
+        "stroke": this.barColor,
+        "fill": this.barColor
+      });
+    } 
+}
+
 }
 
 
