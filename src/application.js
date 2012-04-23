@@ -174,7 +174,13 @@ acpm.app = {
 		var favoriteActionsChartView = new favoriteActionsChartModule.Views.FavoriteActionsChart({
 			collection : favoriteActionsList
 		});
-
+		
+		var configuredCarlinesModule=acpm.app.module("configuredCarlinesChart");
+		var configuredCarlinesList=new configuredCarlinesModule.List();
+		acpm.app.models.add("configuredCarlinesList",configuredCarlinesList);
+		var configuredCarlinesChartView=new configuredCarlinesModule.Views.ConfiguredCarlinesChart({
+			collection:configuredCarlinesList
+			});
 /*		var that = this;
 		google.load('visualization', '1.1', {
 			packages : ['corechart', 'controls'],
@@ -196,6 +202,7 @@ acpm.app = {
 		var month12ChartList=acpm.app.models.get("month12ChartList").reset([]);
 		var minMaxRequestsModel=acpm.app.models.get("minMaxRequestsModel").fetch();
 		var favoriteActionsList=acpm.app.models.get("favoriteActionsList").fetch();
+		var configuredCarlinesList=acpm.app.models.get("configuredCarlinesList").fetch();
 	}
 };
 
@@ -222,4 +229,23 @@ window.log = function() {
 	if(this.console) {
 		console.log(Array.prototype.slice.call(arguments));
 	}
+};
+//Modifications for RAPHAE
+// Draw a rectangle on solid pixel boundaries.
+Raphael.fn.crispRect = function (x, y, width, height) {
+  var crispX = Math.ceil(x) + 0.5,
+    crispY = Math.ceil(y) + 0.5,
+    crispWidth = Math.ceil(width > 0 ? width - 1 : width),
+    crispHeight = Math.ceil(height > 0 ? height - 1 : height);
+  return this.rect(crispX, crispY, crispWidth, crispHeight);
+}
+
+// Draw a line squarely on pixel. 
+Raphael.fn.crispLine = function (x, y, width, height) {
+  return this.path("M {x} {y} l {width} {height}".supplant({
+    'x': Math.ceil(x) + 0.5,
+    'y': Math.ceil(y) + 0.5,
+    'width': Math.ceil(width),
+    'height': Math.ceil(height)
+  }));
 };
