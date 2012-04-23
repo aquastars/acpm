@@ -230,22 +230,4 @@ window.log = function() {
 		console.log(Array.prototype.slice.call(arguments));
 	}
 };
-//Modifications for RAPHAE
-// Draw a rectangle on solid pixel boundaries.
-Raphael.fn.crispRect = function (x, y, width, height) {
-  var crispX = Math.ceil(x) + 0.5,
-    crispY = Math.ceil(y) + 0.5,
-    crispWidth = Math.ceil(width > 0 ? width - 1 : width),
-    crispHeight = Math.ceil(height > 0 ? height - 1 : height);
-  return this.rect(crispX, crispY, crispWidth, crispHeight);
-}
 
-// Draw a line squarely on pixel. 
-Raphael.fn.crispLine = function (x, y, width, height) {
-  return this.path("M {x} {y} l {width} {height}".supplant({
-    'x': Math.ceil(x) + 0.5,
-    'y': Math.ceil(y) + 0.5,
-    'width': Math.ceil(width),
-    'height': Math.ceil(height)
-  }));
-};
