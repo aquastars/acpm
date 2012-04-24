@@ -66,8 +66,7 @@
 						r : 5.5
 					});
 					this.label[1].attr({
-						"font-size": 12, "font-family": " Helvetica, sans-serif",
-						"font-weight" : 800
+						"font-size": 12, "font-family": "'AudiTypeBold', sans-serif",
 					});
 				}
 			}, function() {
@@ -79,8 +78,7 @@
 						r : 5
 					}, 250, "easeOut");
 					this.label[1].attr({
-						"font-size": 12, "font-family": "Helvetica, sans-serif",
-						"font-weight" : 400
+						"font-size": 12, "font-family": "'AudiTypeNormal', sans-serif",
 					});
 				}
 			});

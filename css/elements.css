@@ -19,6 +19,10 @@ h3 {
     color: #b3b3b3;
 }
 
+text{
+   font: 18px/1.5 'AudiTypeNormal',sans-serif;
+}
+
 
 /* generic module box */
 .acpm-module {
@@ -32,9 +36,11 @@ h3 {
     min-height: 270px;
 }
 
-.acpm-12months {
+.acpm-chart {
     min-height: 370px;
+    background: rgb(255,255,255);
 }
+
 
 h3.all-requests{
     font: 42px/1.5 'AudiTypeNormal', Verdana, sans-serif;

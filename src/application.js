@@ -154,7 +154,6 @@ acpm.app = {
 			model : minMaxRequestsModel
 		});
 		var month12ChartModule = acpm.app.module("12monthChart");
-		console.log("month12ChartModule",month12ChartModule.List);
 		var month12ChartList = new month12ChartModule.List();
 		acpm.app.models.add("month12ChartList", month12ChartList);
 		var month12ChartView = new month12ChartModule.Views.Month12Chart({
@@ -176,10 +175,10 @@ acpm.app = {
 		});
 		
 		var configuredCarlinesModule=acpm.app.module("configuredCarlinesChart");
-		var configuredCarlinesList=new configuredCarlinesModule.List();
-		acpm.app.models.add("configuredCarlinesList",configuredCarlinesList);
+		var configuredCarlinesModel=new configuredCarlinesModule.Model();
+		acpm.app.models.add("configuredCarlinesModel",configuredCarlinesModel);
 		var configuredCarlinesChartView=new configuredCarlinesModule.Views.ConfiguredCarlinesChart({
-			collection:configuredCarlinesList
+			model:configuredCarlinesModel
 			});
 /*		var that = this;
 		google.load('visualization', '1.1', {
@@ -202,7 +201,7 @@ acpm.app = {
 		var month12ChartList=acpm.app.models.get("month12ChartList").reset([]);
 		var minMaxRequestsModel=acpm.app.models.get("minMaxRequestsModel").fetch();
 		var favoriteActionsList=acpm.app.models.get("favoriteActionsList").fetch();
-		var configuredCarlinesList=acpm.app.models.get("configuredCarlinesList").fetch();
+		var configuredCarlinesModel=acpm.app.models.get("configuredCarlinesModel").fetch();
 	}
 };
 
@@ -230,4 +229,23 @@ window.log = function() {
 		console.log(Array.prototype.slice.call(arguments));
 	}
 };
+
+
+Array.max = function( array ){
+return Math.max.apply( Math, array );
+};
+
+// Function to get the Min value in Array
+Array.min = function( array ){
+return Math.min.apply( Math, array );
+};
+
+// "{animal} on a {transport}".supplant({animal: "frog", transport: "rocket"})
+String.prototype.supplant = function (o) {
+  return this.replace(/\{([^{}]*)\}/g, function (a, b) {
+    var r = o[b];
+    return typeof r === 'string' || typeof r === 'number' ? r : a;
+  });
+};
+
 
