@@ -52,7 +52,7 @@
 				legend : ["%%.%% - " + this.model.get("maxDay") +" ("+this.model.get("maxRequests")+")", "%%.%% - " + this.model.get("minDay")+" ("+this.model.get("minRequests")+")"],
 				legendpos : "south"
 			});
-			//r.text(00, 100, "Min Max Request Days").attr({font : "14px sans-serif"});
+			//r.text(r.width*0.5, 20, "Min Max Request Days").attr({font : "14px 'AudiTypeBold'"});
 			pie.hover(function() {
 				this.sector.stop();
 				//this.sector.scale(1.05, 1.05, this.cx, this.cy);
@@ -63,6 +63,7 @@
 				if(this.label) {
 					this.label[0].stop();
 					this.label[0].attr({
+						"font-size": 12, "font-family": "'AudiTypeNormal', sans-serif",
 						r : 5.5
 					});
 					this.label[1].attr({
