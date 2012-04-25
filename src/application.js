@@ -182,6 +182,13 @@ acpm.app = {
 		var configuredCarlinesChartView = new configuredCarlinesModule.Views.ConfiguredCarlinesChart({
 			model : configuredCarlinesModel
 		});
+		
+		var mostConfiguredCarlineModule=acpm.app.module("mostConfiguredCarlineChart");
+		var mostConfiguredCarlineModel=new mostConfiguredCarlineModule.Model();
+		acpm.app.models.add("mostConfiguredCarlineModel", mostConfiguredCarlineModel);
+		var mostConfiguredCarlineChartView = new mostConfiguredCarlineModule.Views.MostConfiguredCarlineChart({
+			model : mostConfiguredCarlineModel
+		});
 		/*		var that = this;
 		 google.load('visualization', '1.1', {
 		 packages : ['corechart', 'controls'],
@@ -197,13 +204,14 @@ acpm.app = {
 	googleChartApiLoaded : false,
 	//initialization of the models with MockData
 	initModels : function() {
-		var numRequestChartModel = acpm.app.models.get("numRequestChartModel").fetch();
+		//var numRequestChartModel = acpm.app.models.get("numRequestChartModel").fetch();
 		var top5ChartList = acpm.app.models.get("top5ChartModel").fetch();
 		var allRequestsChartModel = acpm.app.models.get("allRequestsChartModel").fetch();
-		var month12ChartList = acpm.app.models.get("month12ChartList").reset([]);
+		//var month12ChartList = acpm.app.models.get("month12ChartList").reset([]);
 		var minMaxRequestsModel = acpm.app.models.get("minMaxRequestsModel").fetch();
 		var favoriteActionsList = acpm.app.models.get("favoriteActionsList").fetch();
 		var configuredCarlinesModel = acpm.app.models.get("configuredCarlinesModel").fetch();
+		var mostConfiguredCarlineModel = acpm.app.models.get("mostConfiguredCarlineModel").fetch();
 	}
 };
 

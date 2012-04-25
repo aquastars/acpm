@@ -25,7 +25,7 @@
 			// the root of the response.
 			var result = data;
 			if(acpm.app.isMocked) {
-				result = acpm.utils.mock.MinMaxRequestsData();
+				result = acpm.utils.mock.minMaxRequestsData();
 			}
 			return result;
 }

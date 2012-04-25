@@ -20,6 +20,12 @@
          <b><%= date %></b></br>&nbsp;<%= value %>&nbsp;<%= name %>
 
     </script>
+    <!--template for most configured carline of the month -->
+    <script id="mostConfiguredCarlineChart-template"  type="text/template">
+         <h1><%= carline %></h1>
+         <p>mit <%= configurations %> Konfigurationen diesen Monat</p>
+
+    </script>
     <!--Template for Top5 Chart-->
     <script id="top5Chart-template"  type="text/template">
     	       <li style="margin-bottom:2px;">
@@ -63,9 +69,8 @@
                 <div class="clear"></div>
                 <ul style="padding:5px;"></ul>
             </section>
-            <section id="" class="acpm-module">
+            <section id="mostConfiguredCarlineChart" class="acpm-module">
                 <h1 class="acpm-headline-overview">Carline des Monats</h1>
-                <p>Q3</p>
             </section>
         </aside>
         <section class="acpm-content">
@@ -116,5 +121,6 @@
 <script src="src/modules/12monthChart.js" type="text/javascript"></script>
 <script src="src/modules/favoriteActionsChart.js" type="text/javascript"></script>
 <script src="src/modules/configuredCarlinesChart.js" type="text/javascript"></script>
+<script src="src/modules/mostConfiguredCarlineChart.js" type="text/javascript"></script>
 </body>
 </html>
