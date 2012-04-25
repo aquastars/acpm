@@ -21,6 +21,7 @@
 	self.init=function(){
 			self.config=_.extend(defaults, config);
 			self.paper=Raphael(domID,self.config.width,self.config.height);
+			console.log("CONFIG",self.config);
 	}
 
 	self.getMaxValue=function(data){
@@ -58,7 +59,7 @@
 		for(var k=1;k<ticks;k++){
 			//line=self.paper.crispLine(0,(step*k),500,1)//self.paper.path("M0 "+(step*k)+"L500 "+(step*k));
 			pos=(Math.ceil(step*k)+0.5);
-			var line=self.paper.path("M0 "+pos+"L500 "+pos);
+			var line=self.paper.path("M0 "+pos+"L"+self.paper.width+" "+pos);
 			line.attr({"stroke":"#C2C2C2","stroke-width":0.5});
 		}
 		//	
@@ -81,6 +82,7 @@
 	else{
 			trans=chartVcenter;
 			rect.transform("T0,"+trans);
+			rect.toBack();
 			}
 
 		}

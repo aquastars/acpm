@@ -18,10 +18,14 @@
         	this.query = query||"cats";
     	},
 
-    	url: function() {
-        	return "http://search.twitter.com/search.json?q=" + this.query + "&callback=?";
-    	},
-
+     url: function() {
+      if(acpm.app.isMocked){
+          return "http://search.twitter.com/search.json?q=" + this.query + "&callback=?";
+      }
+      else{
+        return //TODO ACPM URL
+      }
+      },
     	parse: function(data) {
         	console.log("favoriteActionsChart DATA", data);
         	// note that the original result contains tweets inside of a 'results' array, not at 

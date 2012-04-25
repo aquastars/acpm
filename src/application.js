@@ -28,6 +28,8 @@ acpm.utils = {
 //add APP namespace
 acpm.namespace("acpm.app");
 acpm.app = {
+	//Application is in mocking state!!!
+	isMocked : true,
 	//reference to this
 	root : this,
 	// Create this closure to contain the cached modules/"Classes"
@@ -167,41 +169,41 @@ acpm.app = {
 			model : numRequestChartModel
 		});
 
-		var favoriteActionsChartModule=acpm.app.module("favoriteActionsChart");
-		var favoriteActionsList=new favoriteActionsChartModule.List();
+		var favoriteActionsChartModule = acpm.app.module("favoriteActionsChart");
+		var favoriteActionsList = new favoriteActionsChartModule.List();
 		acpm.app.models.add("favoriteActionsList", favoriteActionsList);
 		var favoriteActionsChartView = new favoriteActionsChartModule.Views.FavoriteActionsChart({
 			collection : favoriteActionsList
 		});
-		
-		var configuredCarlinesModule=acpm.app.module("configuredCarlinesChart");
-		var configuredCarlinesModel=new configuredCarlinesModule.Model();
-		acpm.app.models.add("configuredCarlinesModel",configuredCarlinesModel);
-		var configuredCarlinesChartView=new configuredCarlinesModule.Views.ConfiguredCarlinesChart({
-			model:configuredCarlinesModel
-			});
-/*		var that = this;
-		google.load('visualization', '1.1', {
-			packages : ['corechart', 'controls'],
-			"callback" : function() {
-				log("Google Charts API Loaded...");
-				that.googleChartApiLoaded=true;
-				that.initModels();
-			}
-		});*/
+
+		var configuredCarlinesModule = acpm.app.module("configuredCarlinesChart");
+		var configuredCarlinesModel = new configuredCarlinesModule.Model();
+		acpm.app.models.add("configuredCarlinesModel", configuredCarlinesModel);
+		var configuredCarlinesChartView = new configuredCarlinesModule.Views.ConfiguredCarlinesChart({
+			model : configuredCarlinesModel
+		});
+		/*		var that = this;
+		 google.load('visualization', '1.1', {
+		 packages : ['corechart', 'controls'],
+		 "callback" : function() {
+		 log("Google Charts API Loaded...");
+		 that.googleChartApiLoaded=true;
+		 that.initModels();
+		 }
+		 });*/
 		this.initModels();
 
 	},
-	googleChartApiLoaded:false,
+	googleChartApiLoaded : false,
 	//initialization of the models with MockData
 	initModels : function() {
 		var numRequestChartModel = acpm.app.models.get("numRequestChartModel").fetch();
 		var top5ChartList = acpm.app.models.get("top5ChartModel").fetch();
 		var allRequestsChartModel = acpm.app.models.get("allRequestsChartModel").fetch();
-		var month12ChartList=acpm.app.models.get("month12ChartList").reset([]);
-		var minMaxRequestsModel=acpm.app.models.get("minMaxRequestsModel").fetch();
-		var favoriteActionsList=acpm.app.models.get("favoriteActionsList").fetch();
-		var configuredCarlinesModel=acpm.app.models.get("configuredCarlinesModel").fetch();
+		var month12ChartList = acpm.app.models.get("month12ChartList").reset([]);
+		var minMaxRequestsModel = acpm.app.models.get("minMaxRequestsModel").fetch();
+		var favoriteActionsList = acpm.app.models.get("favoriteActionsList").fetch();
+		var configuredCarlinesModel = acpm.app.models.get("configuredCarlinesModel").fetch();
 	}
 };
 
@@ -230,22 +232,17 @@ window.log = function() {
 	}
 };
 
-
-Array.max = function( array ){
-return Math.max.apply( Math, array );
+Array.max = function(array) {
+	return Math.max.apply(Math, array);
 };
-
 // Function to get the Min value in Array
-Array.min = function( array ){
-return Math.min.apply( Math, array );
+Array.min = function(array) {
+	return Math.min.apply(Math, array);
 };
-
 // "{animal} on a {transport}".supplant({animal: "frog", transport: "rocket"})
-String.prototype.supplant = function (o) {
-  return this.replace(/\{([^{}]*)\}/g, function (a, b) {
-    var r = o[b];
-    return typeof r === 'string' || typeof r === 'number' ? r : a;
-  });
+String.prototype.supplant = function(o) {
+	return this.replace(/\{([^{}]*)\}/g, function(a, b) {
+		var r = o[b];
+		return typeof r === 'string' || typeof r === 'number' ? r : a;
+	});
 };
-
-
