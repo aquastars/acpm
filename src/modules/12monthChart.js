@@ -19,23 +19,20 @@
 		},
 
 		initialize: function(query) {
-        	this.query = query||"cats";
     	},
-     url: function() {
-      if(acpm.app.isMocked){
-          return "http://search.twitter.com/search.json?q=" + this.query + "&callback=?";
-      }
-      else{
-        return //TODO ACPM URL
-      }
-      },
+		url : function() {
+			if(acpm.app.isMocked) {
+				return "http://jsfiddle.net/echo/jsonp?result="+JSON.stringify(acpm.utils.mock.allRequestsData())+"&callback=?";
+			} else {
+				return //TODO ACPM URL
+			}
+		},
+		parse : function(data) {
+			var result=JSON.parse(data.result)
+			console.log("12monthChart DATA",result);
+			return result;
+		}
 
-    	parse: function(data) {
-        	console.log("12monthChart DATA", data);
-        	// note that the original result contains tweets inside of a 'results' array, not at 
-        	// the root of the response.
-        	return data.results;
-    	}
 	});
 
 	ChartModule.Views.GoogleChart = function(canvas, data) {

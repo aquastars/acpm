@@ -11,18 +11,19 @@
 
 		//
 		numVals = Math.min(numVals || 5, carlines.length);
-		arr = [];
-		for( i = 0; i < 2; i++) {
+		arr = {};
+		for( i = 1; i < 9; i++) {
 			data = [];
 			for( j = 0; j < numVals; j++) {
 				data.push(acpm.utils.getRandomNumberInRange(minVal, maxVal));
 			}
-			arr[i] = data;
+			arr["0"+i+"/12"] = data;
 		}
 		var model = {
 			labels : carlines.slice(0, numVals),
 			data : arr
 		};
+		log(model);
 		return model;
 	}
 	//all requests chart

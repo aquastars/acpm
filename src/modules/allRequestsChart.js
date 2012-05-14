@@ -14,19 +14,14 @@
 		},
 		url : function() {
 			if(acpm.app.isMocked) {
-				return "http://search.twitter.com/search.json?q=" + this.query + "&callback=?";
+				return "http://jsfiddle.net/echo/jsonp?result="+JSON.stringify(acpm.utils.mock.allRequestsData())+"&callback=?";
 			} else {
 				return //TODO ACPM URL
 			}
 		},
 		parse : function(data) {
-			console.log("allRequestsChart DATA", data);
-			// note that the original result contains tweets inside of a 'results' array, not at
-			// the root of the response.
-			var result = data;
-			if(acpm.app.isMocked) {
-				result = acpm.utils.mock.allRequestsData();
-			}
+			var result=JSON.parse(data.result)
+			console.log("allRequestsChart DATA",result);
 			return result;
 		}
 	});
