@@ -89,8 +89,8 @@ JSON.stringify = JSON.stringify || function (obj) {
 					this.$(".upperSelect").append("<option>"+dateKeys[i]+"</option>");
 					this.$(".lowerSelect").append("<option>"+dateKeys[i]+"</option>");
 				}
-				this.$(".upperSelect").selectedIndex=0;
-				this.$(".lowerSelect").selectedIndex=1;
+				this.$(".upperSelect")[0].selectedIndex=0;
+				this.$(".lowerSelect")[0].selectedIndex=1;
 				this.selectedValues=[dateKeys[0],dateKeys[1]];
 			}
 		}

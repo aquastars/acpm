@@ -28,6 +28,44 @@
 		return Math.max(Array.max(data[0]),Array.max(data[1]));
 	}
 
+	self.showTooltip=function(evt){
+		var w=50,h=50;
+
+		if(!self.tooltip){	
+			self.tooltipLabel=self.paper.text(0,0,"22");
+			self.tooltipLabel.attr({
+				"fill":"#666",
+				"fill-opacity":1.0,
+				"font-size":20,
+				"font-family":"'AudiTypeBold',sans-serif"
+		});
+			self.tooltip=self.paper.rect(0,0, w, h, 3);
+			self.tooltip.attr({
+					'stroke-width' : 0.5,
+					'stroke' : "#333",
+					'fill':"#fff",
+					"fill-opacity":0.8
+			});
+			self.tooltip.toFront();
+			self.tooltipLabel.toFront();
+			self.tooltip.hide();
+			self.tooltipLabel.hide();
+		}
+		var col="#333";
+		if(evt.layerY>(self.paper.height*0.5)){
+			col=self.config['colors'][0];
+		}
+		self.tooltip.attr({"x":evt.layerX-(w*0.5),"y":evt.layerY-h-10,});
+		self.tooltipLabel.attr({"x":evt.layerX,"y":evt.layerY-h*0.5-10,'fill':col});
+		self.tooltip.show();
+		self.tooltipLabel.show();
+	}
+
+	self.hideTooltip=function(){
+		self.tooltip.hide();
+		self.tooltipLabel.hide();
+	}
+
 	self.draw=function(){
 		var rect,textLabel,col,i,j,len,stackHeight,trans,chartVcenter,pos,dataArr,maxValue;
 		chartVcenter=self.paper.height*0.5;
@@ -47,7 +85,7 @@
 					'fill':col,
 					"fill-opacity":1.0
 				});
-				rect.hover(function(){log("over",this);},function(){log("out",this);});
+				rect.hover(self.showTooltip,self.hideTooltip);
 		//obere Zeile		
 		if(i==0){
 			trans=chartVcenter-dataArr[j];
