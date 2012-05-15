@@ -59,6 +59,7 @@
 		self.tooltipLabel.attr({"x":evt.layerX,"y":evt.layerY-h*0.5-10,'fill':col});
 		self.tooltip.show();
 		self.tooltipLabel.show();
+		//TODO create Set with tooltip and Text
 	}
 
 	self.hideTooltip=function(){
@@ -85,6 +86,7 @@
 					'fill':col,
 					"fill-opacity":1.0
 				});
+				rect.data("label","hallo");
 				rect.hover(self.showTooltip,self.hideTooltip);
 		//obere Zeile		
 		if(i==0){
